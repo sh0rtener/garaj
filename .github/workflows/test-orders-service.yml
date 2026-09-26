@@ -1,0 +1,31 @@
+name: Restore, Build and Test Orders service
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "src/servers/orders/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "src/servers/orders/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore solution
+        run: dotnet restore src/servers/orders/Garaj.Orders.slnx
+
+      - name: Build solution
+        run: dotnet build src/servers/orders/Garaj.Orders.slnx --no-restore --configuration Release
+
+      - name: Run tests
+        run: dotnet test src/servers/orders/Garaj.Orders.slnx --no-build --configuration Release --verbosity normal

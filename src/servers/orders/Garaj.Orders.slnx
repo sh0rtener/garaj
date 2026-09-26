@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Core/">
+    <Project Path="Core/Garaj.Orders.Domain/Garaj.Orders.Domain.csproj" />
+    <Project Path="Core/Garaj.Orders.UseCases/Garaj.Orders.UseCases.csproj" />
+  </Folder>
+  <Folder Name="/Infra/">
+    <Project Path="Infra/Garaj.Orders.Caching/Garaj.Orders.Caching.csproj" />
+    <Project Path="Infra/Garaj.Orders.Events/Garaj.Orders.Events.csproj" />
+    <Project Path="Infra/Garaj.Orders.Persistense/Garaj.Orders.Persistense.csproj" />
+  </Folder>
+  <Folder Name="/Presenters/">
+    <Project Path="Presenters/Garaj.Orders.WebApi/Garaj.Orders.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/Garaj.Orders.Tests/Garaj.Orders.Tests.csproj" />
+  </Folder>
+</Solution>

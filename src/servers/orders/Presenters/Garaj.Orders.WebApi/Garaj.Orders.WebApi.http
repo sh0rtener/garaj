@@ -1,0 +1,6 @@
+@Garaj.Orders.WebApi_HostAddress = http://localhost:5062
+
+GET {{Garaj.Orders.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

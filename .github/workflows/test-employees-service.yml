@@ -1,0 +1,31 @@
+name: Restore, Build and Test Employees service
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "src/servers/employees/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "src/servers/employees/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore solution
+        run: dotnet restore src/servers/employees/Garaj.Employees.slnx
+
+      - name: Build solution
+        run: dotnet build src/servers/employees/Garaj.Employees.slnx --no-restore --configuration Release
+
+      - name: Run tests
+        run: dotnet test src/servers/employees/Garaj.Employees.slnx --no-build --configuration Release --verbosity normal

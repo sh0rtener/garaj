@@ -1,0 +1,52 @@
+services:
+  gateway:
+    image: gateway-ng
+    hostname: gateway-ng
+    container_name: gateway
+    restart: always
+    build:
+      context: nginx/
+      dockerfile: Dockerfile
+    ports:
+      - 7000:8080
+  garaj-web:
+    image: garaj-web
+    hostname: garaj-web
+    container_name: garaj-web
+    restart: always
+    build:
+      context: ../
+      dockerfile: src/clients/garaj-web/Dockerfile
+    ports:
+      - 8080:8080
+  clients:
+    build:
+      context: ..
+      dockerfile: src/servers/clients/Dockerfile
+    ports:
+      - "6001:8080"
+  employees:
+    build:
+      context: ..
+      dockerfile: src/servers/employees/Dockerfile
+    ports:
+      - "6002:8080"
+  finances:
+    build:
+      context: ..
+      dockerfile: src/servers/finances/Dockerfile
+    ports:
+      - "6003:8080"
+  identity:
+    build:
+      context: ..
+      dockerfile: src/servers/identity/Dockerfile
+    ports:
+      - "6004:8080"
+  orders:
+    build:
+      context: ..
+      dockerfile: src/servers/orders/Dockerfile
+    ports:
+      - "6005:8080"
+    
