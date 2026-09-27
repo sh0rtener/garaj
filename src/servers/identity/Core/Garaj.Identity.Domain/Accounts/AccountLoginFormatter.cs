@@ -22,6 +22,10 @@ public sealed class PhoneLoginFormatter : AccountLoginFormatter
 {
     public override string Format(string input)
     {
+        var validator = new PhoneLoginValidation();
+        if (!validator.IsValidInput(input))
+            throw new InvalidAccountLoginFormatException();
+
         if (input[0].Equals('8'))
             input = "7" + input[1..];
         return input
@@ -38,6 +42,10 @@ public sealed class EmailLoginFormatter : AccountLoginFormatter
 {
     public override string Format(string input)
     {
+        var validator = new EmailLoginValidation();
+        if (!validator.IsValidInput(input))
+            throw new InvalidAccountLoginFormatException();
+
         return input.ToLowerInvariant().Trim();
     }
 }
